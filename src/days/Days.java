@@ -15,20 +15,21 @@ import java.util.Scanner;
  * then print the week day names. 
  *
  * @author sivagamasrinivasan
+ * This class takes a day number as input and calls the Weekdays class to print the name of the day.
+ * The code has been modified to use enums for improved type safety and cohesion.
  */
 public class Days {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-         
-    Scanner in =new Scanner(System.in);
-    System.out.println("Enter the day number (one,two,three,four,five) in string");
-    String code = in.next();
-    Weekdays t= new Weekdays();
-    t.nameOfDay(code); 
-    }// TODO code application logic here
-    
-    
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the day number (1-7)");
+        int code = in.nextInt();
+
+        if (code >= 1 && code <= 7) {
+            Weekdays.Day day = Weekdays.Day.values()[code - 1];
+            Weekdays weekdays = new Weekdays();
+            weekdays.printDayName(day);
+        } else {
+            System.out.println("Invalid day number!");
+        }
+    }
 }
